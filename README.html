@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>System Access Terminal</title>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: monospace;
+      font-size: 1.2rem;
+      padding: 20px;
+      overflow: hidden;
+    }
+    #terminal {
+      white-space: pre-line;
+    }
+    .red-alert {
+      color: red;
+      font-size: 3rem;
+      text-align: center;
+      margin-top: 100px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+  <div class="red-alert" id="alert">YOU'VE BEEN HACKED</div>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+    const alertBox = document.getElementById("alert");
+
+    const lines = [
+      "Connecting to remote host...",
+      "Bypassing firewall...",
+      "Accessing system files...",
+      "Injecting malware payload...",
+      "Deleting core directory /C...",
+      "ERROR: Connection with 197.23.64.10 established",
+      "Exporting private keys...",
+      "Remote access granted...",
+      "Monitoring keyboard input...",
+      "Tracking IP address...",
+      "Injecting rootkit...",
+      "Erasing local backups..."
+    ];
+
+    let index = 0;
+
+    function typeLine() {
+      if (index < lines.length) {
+        terminal.innerHTML += lines[index] + "\n";
+        index++;
+        setTimeout(typeLine, 700);
+      } else {
+        // Show big red alert
+        document.body.style.backgroundColor = "black";
+        terminal.style.display = "none";
+        alertBox.style.display = "block";
+      }
+    }
+
+    typeLine();
+  </script>
+</body>
+</html>
